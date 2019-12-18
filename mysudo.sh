@@ -11,7 +11,7 @@ git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git device/x
 git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git device/xiaomi/msm8953-common
 git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
 git clone https://github.com/MASTERGUY/proprietary_vendor_xiaomi.git vendor/xiaomi
-
+git clone https://github.com/MASTERGUY/android_device_twrp_tissot.git device/twrp/tissot
 fi
 
 if [ $base = 2 ]
@@ -21,6 +21,6 @@ git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git -b du10 
 git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git device/xiaomi/msm8953-common
 git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
 git clone https://github.com/MASTERGUY/proprietary_vendor_xiaomi.git vendor/xiaomi
-
+git clone https://github.com/MASTERGUY/android_device_twrp_tissot.git device/twrp/tissot
 fi
 echo "Cloning Done!"
