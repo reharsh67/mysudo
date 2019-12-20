@@ -12,6 +12,10 @@ git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git 
 git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
 git clone https://github.com/MASTERGUY/proprietary_vendor_xiaomi.git vendor/xiaomi
 git clone https://github.com/MASTERGUY/android_device_twrp_tissot.git device/twrp/tissot
+echo "Removing Old Gapps & Replacing it with mine!"
+rm -rf vendor/aosip/gapps/config.mk
+git clone  https://github.com/MASTERGUY/android_vendor_gapps.git vendor/aosip/gapps/
+
 fi
 
 if [ $base = 2 ]
