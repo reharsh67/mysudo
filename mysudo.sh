@@ -14,7 +14,7 @@ git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git kernel/x
 git clone https://github.com/DerpFest-Devices/vendor_xiaomi_tissot.git vendor/xiaomi
 git clone https://github.com/MASTERGUY/android_device_twrp_tissot.git device/twrp/tissot
 echo "Removing Old Gapps & Replacing it with mine!"
-rm -rf vendor/aosip/gapps/config.mk
+rm -rf vendor/gapps/config.mk
 wget -P vendor/gapps/ https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/master/config.mk
 echo "Adding FM From LOS"
 git clone https://github.com/LineageOS/android_packages_apps_FMRadio packages/apps/FMRadio
