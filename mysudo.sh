@@ -4,6 +4,7 @@ echo "Select the base : "
 echo "1. Clone DerpFest DT+Kernel+CDT+Vendor From Official Sources"
 echo "2. Clone Du-Rex DT+Kernel+CDT+Vendor"
 echo "3. Clone DerpFest DT+Kernel+CDT+Vendor From My Own Repo"
+echo "4. Start the build ;) "
 read base
 
 if [ $base = 1 ]
@@ -37,13 +38,24 @@ git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git device/x
 git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git device/xiaomi/msm8953-common
 git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
 git clone https://github.com/MASTERGUY/proprietary_vendor_xiaomi.git vendor/xiaomi
-git clone https://github.com/MASTERGUY/android_device_twrp_tissot.git device/twrp/tissot
-echo "Removing Old Gapps & Replacing it with mine!"
+git clone https://github.c"om/MASTERGUY/android_device_twrp_tissot.git device/twrp/tissot
+echo "Removing Old Gapps & Replacing it with mine!
 rm -rf vendor/aosip/gapps/config.mk
 wget -P vendor/gapps/ https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/master/config.mk
 echo "Adding FM From LOS"
 git clone https://github.com/LineageOS/android_packages_apps_FMRadio packages/apps/FMRadio
 git clone https://github.com/LineageOS/android_vendor_qcom_opensource_libfmjni.git vendor/qcom/opensource/libfmjni
+fi
 
-
+if [ $base = 4 ]
+then
+rm -rf vendor/aosip/gapps/config.mk
+repo sync --force-sync --no-tags --no-clone-bundle
+rm -rf vendor/aosip/gapps/config.mk
+echo "Removing Old Gapps & Replacing it with mine!"
+wget -P vendor/gapps/ https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/master/config.mk
+. build/envsetup.sh
+lunch derp_tissot-userdebug
+time mka kronic
+fi
 echo "Cloning Done!"
