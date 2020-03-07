@@ -50,12 +50,16 @@ fi
 if [ $base = 4 ]
 then
 rm -rf vendor/aosip/gapps/config.mk
+rm -rf vendor/pixelstyle/
 repo sync --force-sync --no-tags --no-clone-bundle
 rm -rf vendor/aosip/gapps/config.mk
+rm -rf vendor/pixelstyle/
 echo "Removing Old Gapps & Replacing it with mine!"
 wget -P vendor/gapps/ https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/master/config.mk
+echo "Replacing with my pixel style"
+git clone https://github.com/MASTERGUY/platform_vendor_pixelstyle.git vendor/pixelstyle/
 . build/envsetup.sh
 lunch derp_tissot-userdebug
 time mka kronic
 fi
-echo "Cloning Done!"
+echo "Script finished its job"
