@@ -48,7 +48,7 @@ fi
 
 if [ $base = 4 ]
 then
-git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot.git.git -b aex device/xiaomi/tissot
+git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot -b aex device/xiaomi/tissot
 git clone https://github.com/AospExtended-Devices/device_xiaomi_msm8953-common.git -b aex device/xiaomi/msm8953-common
 git clone https://github.com/AospExtended-Devices/kernel_xiaomi_msm8953.git -b ten kernel/xiaomi/msm8953
 git clone https://github.com/DerpFest-Devices/vendor_xiaomi_tissot.git vendor/xiaomi
