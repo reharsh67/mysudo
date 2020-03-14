@@ -39,8 +39,11 @@ git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git 
 git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
 git clone https://github.com/MASTERGUY/proprietary_vendor_xiaomi.git vendor/xiaomi
 echo "Removing Old Gapps & Replacing it with mine"!
-rm -rf vendor/aosip/gapps/config.mk
+rm -rf vendor/gapps/config.mk
 wget -P vendor/gapps/ https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/master/config.mk
+echo "Removing live wallpaper crap"
+rm -rf vendor/aosip/config/packages.mk
+wget -P vendor/aosip/config https://raw.githubusercontent.com/MASTERGUY/vendor_aosip/master/config/packages.mk
 echo "Adding FM From LOS"
 git clone https://github.com/LineageOS/android_packages_apps_FMRadio packages/apps/FMRadio
 git clone https://github.com/LineageOS/android_vendor_qcom_opensource_libfmjni.git vendor/qcom/opensource/libfmjni
@@ -50,21 +53,21 @@ if [ $base = 4 ]
 then
 git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot -b aex device/xiaomi/tissot
 git clone https://github.com/AospExtended-Devices/device_xiaomi_msm8953-common.git -b aex device/xiaomi/msm8953-common
-git clone https://github.com/AospExtended-Devices/kernel_xiaomi_msm8953.git -b ten kernel/xiaomi/msm8953
+git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git
 git clone https://github.com/DerpFest-Devices/vendor_xiaomi_tissot.git vendor/xiaomi
 fi
 
 if [ $base = 5 ]
 then
-rm -rf vendor/aosip/gapps/config.mk
-rm -rf vendor/pixelstyle/
+rm -rf vendor/gapps/config.mk
+rm -rf vendor/aosip/config/packages.mk
 repo sync --force-sync --no-tags --no-clone-bundle
-rm -rf vendor/aosip/gapps/config.mk
-rm -rf vendor/pixelstyle/
+rm -rf vendor/gapps/config.mk
+rm -rf vendor/aosip/config/packages.mk
 echo "Removing Old Gapps & Replacing it with mine!"
 wget -P vendor/gapps/ https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/master/config.mk
-echo "Replacing with my pixel style"
-git clone https://github.com/MASTERGUY/platform_vendor_pixelstyle.git vendor/pixelstyle/
+echo "Removing live wallpaper crap"
+wget -P vendor/aosip/config https://raw.githubusercontent.com/MASTERGUY/vendor_aosip/master/config/packages.mk
 . build/envsetup.sh
 lunch derp_tissot-userdebug
 time mka kronic
