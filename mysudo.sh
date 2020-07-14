@@ -4,9 +4,11 @@ echo "Select the base : "
 echo "1. Clone DerpFest DT+Kernel+CDT+Vendor From Official Sources"
 echo "2. Clone Du-Rex DT+Kernel+CDT+Vendor"
 echo "3. Clone DerpFest DT+Kernel+CDT+Vendor From My Own Repo"
-echo "4. Clone AEX DT+Kernel+CDT From Official Sources"
-echo "5. Start the build DerpFest ;) "
-echo "6. Start the build AEX ;) "
+echo "4. Clone AEX DT+CDT From Official Sources"
+echo "5: Clone PA DT+CDT+ From My Own Repo"
+echo "6. Start the build DerpFest ;) "
+echo "7. Start the build AEX ;) "
+echo "8. Start the build PA ;) "
 read base
 
 if [ $base = 1 ]
@@ -51,13 +53,30 @@ fi
 
 if [ $base = 4 ]
 then
-git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot -b aex device/xiaomi/tissot
+git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot.git -b aex device/xiaomi/tissot
 git clone https://github.com/AospExtended-Devices/device_xiaomi_msm8953-common.git -b aex device/xiaomi/msm8953-common
-git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git
+git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
 git clone https://github.com/DerpFest-Devices/vendor_xiaomi_tissot.git vendor/xiaomi
 fi
 
 if [ $base = 5 ]
+then
+git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git -b pa device/xiaomi/tissot
+git clone https://github.com/MASTERGUY/device_xiaomi_msm8953-common.git -b pa device/xiaomi/msm8953-common
+git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
+git clone https://github.com/DerpFest-Devices/vendor_xiaomi_tissot.git vendor/xiaomi
+rm -rf  hardware/qcom/bootctrl hardware/qcom/audio hardware/qcom/media hardware/qcom/display packages/apps/Bluetooth vendor/qcom/opensource/audio-hal/primary-hal
+git clone https://github.com/nitrogen-project/android_hardware_qcom_bootctrl -b 10 hardware/qcom/bootctrl
+git clone https://github.com/AOSPA/android_hardware_qcom_display -b quartz-89xx hardware/qcom/display
+git clone https://github.com/AOSPA/android_hardware_qcom_audio -b quartz-89xx hardware/qcom/audio
+git clone https://github.com/AOSPA/android_hardware_qcom_media -b quartz-89xx hardware/qcom/media
+git clone https://github.com/AOSPA/android_packages_apps_Bluetooth -b quartz-dev packages/apps/Bluetooth
+git clone https://github.com/AOSPA/android_hardware_qcom_media -b quartz-89xx vendor/qcom/opensource/audio-hal/primary-hal
+
+fi
+
+
+if [ $base = 6 ]
 then
 rm -rf vendor/gapps/config.mk
 rm -rf vendor/aosip/config/packages.mk
@@ -73,12 +92,29 @@ lunch derp_tissot-userdebug
 time mka kronic
 fi
 
-if [ $base = 6 ]
+if [ $base = 7 ]
 then
 repo sync --force-sync --no-tags --no-clone-bundle
 . build/envsetup.sh
-lunch aosp_tissot-userdebug
+lunch aosp_tissot-user
 mka aex -j$(nproc --all)
+fi
+
+if [ $base = 8 ]
+then
+echo "Removing Reduencies Before Syncing"
+rm -rf hardware/qcom/bootctrl hardware/qcom/audio hardware/qcom/media hardware/qcom/display packages/apps/Bluetooth vendor/qcom/opensource/audio-hal/primary-hal
+repo sync --no-tags --no-clone-bundle
+echo "Adding Hals Before Building"
+rm -rf hardware/qcom/bootctrl hardware/qcom/audio hardware/qcom/media hardware/qcom/display packages/apps/Bluetooth vendor/qcom/opensource/audio-hal/primary-hal
+git clone https://github.com/nitrogen-project/android_hardware_qcom_bootctrl -b 10 hardware/qcom/bootctrl
+git clone https://github.com/AOSPA/android_hardware_qcom_display -b quartz-89xx hardware/qcom/display
+git clone https://github.com/AOSPA/android_hardware_qcom_audio -b quartz-89xx hardware/qcom/audio
+git clone https://github.com/AOSPA/android_hardware_qcom_media -b quartz-89xx hardware/qcom/media
+git clone https://github.com/AOSPA/android_packages_apps_Bluetooth -b quartz-dev packages/apps/Bluetooth
+git clone https://github.com/AOSPA/android_hardware_qcom_media -b quartz-89xx vendor/qcom/opensource/audio-hal/primary-hal
+./rom-build.sh tissot
+
 fi
 
 echo "Task is executed successfully"
