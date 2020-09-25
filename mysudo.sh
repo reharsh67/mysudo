@@ -1,14 +1,19 @@
 #!/bin/bash
 
 echo "Select the base : "
-echo "1. Clone DerpFest DT+Kernel+CDT+Vendor From Official Sources"
-echo "2. Clone Du-Rex DT+Kernel+CDT+Vendor"
-echo "3. Clone DerpFest DT+Kernel+CDT+Vendor From My Own Repo"
-echo "4. Clone AEX DT+CDT From Official Sources"
-echo "5: Clone PA DT+CDT+ From My Own Repo"
-echo "6. Start the build DerpFest ;) "
-echo "7. Start the build AEX ;) "
-echo "8. Start the build PA ;) "
+echo "01. Clone DerpFest DT+Kernel+CDT+Vendor From Official Sources"
+echo "02. Clone Du-Rex DT+Kernel+CDT+Vendor"
+echo "03. Clone DerpFest DT+Kernel+CDT+Vendor From My Own Repo"
+echo "04. Clone AEX DT+CDT From Official Sources"
+echo "05: Clone PA DT+CDT+ From My Own Repo"
+echo "06. Start the build DerpFest ;) "
+echo "07. Start the build AEX ;) "
+echo "08. Start the build PA ;) "
+echo "09. Run Repo Sync (Force) "
+echo "10. Clone Yaap DT+Kernel+CDT+Vendor From Official Sources"
+echo "11. Clone AEX DT+Kernel+CDT+Vendor From Official Sources"
+echo "12. Clone Hals From LOS"
+
 read base
 
 if [ $base = 1 ]
@@ -114,7 +119,35 @@ git clone https://github.com/AOSPA/android_hardware_qcom_media -b quartz-89xx ha
 git clone https://github.com/AOSPA/android_packages_apps_Bluetooth -b quartz-dev packages/apps/Bluetooth
 git clone https://github.com/AOSPA/android_hardware_qcom_media -b quartz-89xx vendor/qcom/opensource/audio-hal/primary-hal
 ./rom-build.sh tissot
+fi
 
+if [ $base = 9 ]
+then
+repo sync --force-sync --no-tags --no-clone-bundle
+fi
+
+if [ $base = 10 ]
+then
+git clone https://github.com/yaap/device_xiaomi_tissot.git device/xiaomi/tissot
+git clone https://github.com/yaap/device_xiaomi_msm8953-common.git device/xiaomi/msm8953-common
+git clone https://github.com/yaap/kernel_xiaomi_tissot.git kernel/xiaomi/msm8953
+git clone https://github.com/yaap/vendor_xiaomi.git vendor/xiaomi
+fi
+
+if [ $base = 11 ]
+then
+git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot.git -b aex-r device/xiaomi/tissot
+git clone https://github.com/AospExtended-Devices/device_xiaomi_msm8953-common.git -b aex-r device/xiaomi/msm8953-common
+git clone https://github.com/yaap/kernel_xiaomi_tissot.git kernel/xiaomi/msm8953
+git clone https://github.com/yaap/vendor_xiaomi.git vendor/xiaomi
+fi
+
+if [ $base = 12 ]
+then
+rm -rf hardware/qcom/display hardware/qcom/audio hardware/qcom/media
+git clone https://github.com/LineageOS/android_hardware_qcom_display -b lineage-18.0-caf-msm8996 hardware/qcom/display
+git clone https://github.com/LineageOS/android_hardware_qcom_media -b lineage-18.0-caf-msm8996 hardware/qcom/media
+git clone https://github.com/Line ageOS/android_hardware_qcom_audio -b lineage-18.0-caf-msm8996 hardware/qcom/audio
 fi
 
 echo "Task is executed successfully"
