@@ -145,10 +145,10 @@ fi
 
 if [ $base = 12 ]
 then
-rm -rf hardware/qcom/display hardware/qcom/audio hardware/qcom/media
-git clone https://github.com/LineageOS/android_hardware_qcom_display -b lineage-18.0-caf-msm8996 hardware/qcom/display
-git clone https://github.com/LineageOS/android_hardware_qcom_media -b lineage-18.0-caf-msm8996 hardware/qcom/media
-git clone https://github.com/Line ageOS/android_hardware_qcom_audio -b lineage-18.0-caf-msm8996 hardware/qcom/audio
+rm -rf hardware/qcom-caf/display hardware/qcom-caf/audio hardware/qcom-caf/media
+git clone https://github.com/LineageOS/android_hardware_qcom_display -b lineage-18.0-caf-msm8996 hardware/qcom-caf/display
+git clone https://github.com/LineageOS/android_hardware_qcom_media -b lineage-18.0-caf-msm8996 hardware/qcom-caf/media
+git clone https://github.com/Line ageOS/android_hardware_qcom_audio -b lineage-18.0-caf-msm8996 hardware/qcom-caf/audio
 fi
 
 if [ $base = 13 ]
