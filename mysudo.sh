@@ -13,6 +13,7 @@ echo "09. Run Repo Sync (Force) "
 echo "10. Clone Yaap DT+Kernel+CDT+Vendor From Official Sources"
 echo "11. Clone AEX DT+Kernel+CDT+Vendor From Official Sources"
 echo "12. Clone Hals From LOS"
+echo "13. Grab Gapps From Gitlabs"
 
 read base
 
@@ -148,6 +149,19 @@ rm -rf hardware/qcom/display hardware/qcom/audio hardware/qcom/media
 git clone https://github.com/LineageOS/android_hardware_qcom_display -b lineage-18.0-caf-msm8996 hardware/qcom/display
 git clone https://github.com/LineageOS/android_hardware_qcom_media -b lineage-18.0-caf-msm8996 hardware/qcom/media
 git clone https://github.com/Line ageOS/android_hardware_qcom_audio -b lineage-18.0-caf-msm8996 hardware/qcom/audio
+fi
+
+if [ $base = 13 ]
+then
+rm -rf vendor/google/gms vendor/google/pixel 
+mkdir -p vendor/google
+cd vendor/google
+wget https://gitlab.com/ZVNexus/android_vendor_google_gms/-/archive/ruby/android_vendor_google_gms-ruby.zip
+wget https://gitlab.com/ZVNexus/android_vendor_google_pixel/-/archive/ruby/android_vendor_google_pixel-ruby.zip
+unzip -q android_vendor_google_gms-ruby.zip && mv android_vendor_google_gms-ruby gms && rm -rf android_vendor_google_gms-ruby.zip 
+unzip -q android_vendor_google_pixel-ruby.zip && mv android_vendor_google_pixel-ruby pixel && rm -rf android_vendor_google_pixel-ruby.zip
+rm vendor/google/gms/gms-vendor.mk
+wget https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/R/gms-vendor.mk -P vendor/google/gms/
 fi
 
 echo "Task is executed successfully"
