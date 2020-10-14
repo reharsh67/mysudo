@@ -14,7 +14,7 @@ echo "10. Clone Yaap DT+Kernel+CDT+Vendor From Official Sources"
 echo "11. Clone AEX DT+Kernel+CDT+Vendor From Official Sources"
 echo "12. Clone Hals From LOS"
 echo "13. Grab Gapps From Gitlabs"
-
+echo "14. Clone Wlan Hals from my git"
 read base
 
 if [ $base = 1 ]
@@ -163,5 +163,13 @@ unzip -q android_vendor_google_pixel-ruby.zip && mv android_vendor_google_pixel-
 rm vendor/google/gms/gms-vendor.mk
 wget https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/R/gms-vendor.mk -P vendor/google/gms/
 fi
+
+if [ $base = 14 ]
+then
+rm -rf hardware/qcom-caf/wlan vendor/qcom/opensource/data-ipa-cfg-mgr 
+git clone https://github.com/MASTERGUY/hardware_qcom-caf_wlan.git hardware/qcom-caf/wlan
+git clone https://github.com/MASTERGUY/vendor_qcom_opensource_data-ipa-cfg-mgr.git vendor/qcom/opensource/data-ipa-cfg-mgr
+fi
+
 
 echo "Task is executed successfully"
