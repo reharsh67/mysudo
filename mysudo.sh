@@ -166,9 +166,8 @@ fi
 
 if [ $base = 14 ]
 then
-rm -rf hardware/qcom-caf/wlan vendor/qcom/opensource/data-ipa-cfg-mgr 
-git clone https://github.com/MASTERGUY/hardware_qcom-caf_wlan.git hardware/qcom-caf/wlan
-git clone https://github.com/MASTERGUY/vendor_qcom_opensource_data-ipa-cfg-mgr.git vendor/qcom/opensource/data-ipa-cfg-mgr
+rm -rf hardware/qcom-caf/wlan
+git clone https://github.com/MASTERGUY/android_hardware_qcom_wlan.git hardware/qcom-caf/wlan
 fi
 
 
