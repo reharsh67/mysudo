@@ -10,11 +10,10 @@ echo "06. Start the build DerpFest ;) "
 echo "07. Start the build AEX ;) "
 echo "08. Start the build PA ;) "
 echo "09. Run Repo Sync (Force) "
-echo "10. Clone Yaap DT+Kernel+CDT+Vendor From Official Sources"
+echo "10. Clone CrDroid DT+Kernel+CDT+Vendor From My Own Git"
 echo "11. Clone AEX DT+Kernel+CDT+Vendor From Official Sources"
 echo "12. Clone Hals From LOS"
-echo "13. Grab Gapps From Gitlabs"
-echo "14. Clone Wlan Hals from my git"
+echo "13. Clone Wlan Hals from my git"
 read base
 
 if [ $base = 1 ]
@@ -129,18 +128,18 @@ fi
 
 if [ $base = 10 ]
 then
-git clone https://github.com/yaap/device_xiaomi_tissot.git device/xiaomi/tissot
-git clone https://github.com/yaap/device_xiaomi_msm8953-common.git device/xiaomi/msm8953-common
-git clone https://github.com/yaap/kernel_xiaomi_tissot.git kernel/xiaomi/msm8953
-git clone https://github.com/yaap/vendor_xiaomi.git vendor/xiaomi
+git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git -b cr-eleven device/xiaomi/tissot
+git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git -b cr-eleven device/xiaomi/msm8953-common
+git clone https://github.com/MASTERGUY/android_kernel_xiaomi_tissot.git -b eleven kernel/xiaomi/msm8953
+git clone https://github.com/MASTERGUY/android_vendor_xiaomi.git -b eleven vendor/xiaomi
 fi
 
 if [ $base = 11 ]
 then
 git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot.git -b aex-r device/xiaomi/tissot
 git clone https://github.com/AospExtended-Devices/device_xiaomi_msm8953-common.git -b aex-r device/xiaomi/msm8953-common
-git clone https://github.com/yaap/kernel_xiaomi_tissot.git kernel/xiaomi/msm8953
-git clone https://github.com/yaap/vendor_xiaomi.git vendor/xiaomi
+git clone https://github.com/MASTERGUY/android_kernel_xiaomi_tissot.git -b eleven kernel/xiaomi/msm8953
+git clone https://github.com/MASTERGUY/android_vendor_xiaomi.git -b eleven vendor/xiaomi
 fi
 
 if [ $base = 12 ]
@@ -152,19 +151,6 @@ git clone https://github.com/LineageOS/android_hardware_qcom_audio -b lineage-18
 fi
 
 if [ $base = 13 ]
-then
-rm -rf vendor/google/gms vendor/google/pixel 
-mkdir -p vendor/google
-cd vendor/google
-wget https://gitlab.com/ZVNexus/android_vendor_google_gms/-/archive/ruby/android_vendor_google_gms-ruby.zip
-wget https://gitlab.com/ZVNexus/android_vendor_google_pixel/-/archive/ruby/android_vendor_google_pixel-ruby.zip
-unzip -q android_vendor_google_gms-ruby.zip && mv android_vendor_google_gms-ruby gms && rm -rf android_vendor_google_gms-ruby.zip 
-unzip -q android_vendor_google_pixel-ruby.zip && mv android_vendor_google_pixel-ruby pixel && rm -rf android_vendor_google_pixel-ruby.zip
-rm vendor/google/gms/gms-vendor.mk
-wget https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/R/gms-vendor.mk -P vendor/google/gms/
-fi
-
-if [ $base = 14 ]
 then
 rm -rf hardware/qcom-caf/wlan
 git clone https://github.com/MASTERGUY/android_hardware_qcom_wlan.git hardware/qcom-caf/wlan
