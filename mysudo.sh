@@ -130,16 +130,16 @@ if [ $base = 10 ]
 then
 git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git -b cr-eleven device/xiaomi/tissot
 git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git -b cr-eleven device/xiaomi/msm8953-common
-git clone https://github.com/MASTERGUY/android_kernel_xiaomi_tissot.git -b eleven kernel/xiaomi/msm8953
-git clone https://github.com/MASTERGUY/android_vendor_xiaomi.git -b eleven vendor/xiaomi
+git clone https://github.com/MASTERGUY/android_kernel_xiaomi_msm8953.git -b eleven kernel/xiaomi/msm8953
+git clone https://github.com/MASTERGUY/android_vendor_xiaomi_tissot.git -b eleven vendor/xiaomi
 fi
 
 if [ $base = 11 ]
 then
 git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot.git -b aex-r device/xiaomi/tissot
 git clone https://github.com/AospExtended-Devices/device_xiaomi_msm8953-common.git -b aex-r device/xiaomi/msm8953-common
-git clone https://github.com/MASTERGUY/android_kernel_xiaomi_tissot.git -b eleven kernel/xiaomi/msm8953
-git clone https://github.com/MASTERGUY/android_vendor_xiaomi.git -b eleven vendor/xiaomi
+git clone https://github.com/MASTERGUY/android_kernel_xiaomi_msm8953.git -b eleven kernel/xiaomi/msm8953
+git clone https://github.com/MASTERGUY/android_vendor_xiaomi_tissot.git -b eleven vendor/xiaomi
 fi
 
 if [ $base = 12 ]
