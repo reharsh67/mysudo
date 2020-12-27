@@ -10,10 +10,13 @@ echo "06. Start the build DerpFest ;) "
 echo "07. Start the build AEX ;) "
 echo "08. Start the build PA ;) "
 echo "09. Run Repo Sync (Force) "
-echo "10. Clone CrDroid DT+Kernel+CDT+Vendor From My Own Git"
-echo "11. Clone AEX DT+Kernel+CDT+Vendor From Official Sources"
-echo "12. Clone Hals From LOS"
-echo "13. Clone Wlan Hals from my git"
+echo "10. Clone CrDroid DT+Kernel+CDT+Vendor From Officials Git"
+echo "11. Clone CrDroid DT+Kernel+CDT+Vendor From My Own Git"
+echo "12. Clone AEX DT+Kernel+CDT+Vendor From Official Sources"
+echo "13. Clone AEX DT+Kernel+CDT+Vendor From My Own Git"
+echo "14. Clone Hals From LOS"
+echo "15. Clone Hals From My Git (R)"
+echo "16. Clone Hardware_interfaces From My Own Git"
 read base
 
 if [ $base = 1 ]
@@ -128,21 +131,37 @@ fi
 
 if [ $base = 10 ]
 then
-git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git -b cr-eleven device/xiaomi/tissot
-git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git -b cr-eleven device/xiaomi/msm8953-common
-git clone https://github.com/MASTERGUY/android_kernel_xiaomi_msm8953.git -b eleven kernel/xiaomi/msm8953
-git clone https://github.com/MASTERGUY/android_vendor_xiaomi_tissot.git -b eleven vendor/xiaomi
+git clone https://github.com/crdroidandroid/android_device_xiaomi_tissot.git -b 11.0 device/xiaomi/tissot
+git clone https://github.com/crdroidandroid/android_device_xiaomi_msm8953-common-tissot.git -b 11.0 device/xiaomi/msm8953-common
+git clone https://github.com/crdroidandroid/android_kernel_xiaomi_tissot.git -b 11.0 kernel/xiaomi/msm8953
+git clone https://gitlab.com/MASTERGUY/proprietary_vendor_xiaomi.git -b eleven vendor/xiaomi
 fi
 
 if [ $base = 11 ]
 then
-git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot.git -b aex-r device/xiaomi/tissot
-git clone https://github.com/AospExtended-Devices/device_xiaomi_msm8953-common.git -b aex-r device/xiaomi/msm8953-common
+git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git -b cr-eleven device/xiaomi/tissot
+git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git -b cr-eleven device/xiaomi/msm8953-common
 git clone https://github.com/MASTERGUY/android_kernel_xiaomi_msm8953.git -b eleven kernel/xiaomi/msm8953
-git clone https://github.com/MASTERGUY/android_vendor_xiaomi_tissot.git -b eleven vendor/xiaomi
+git clone https://gitlab.com/MASTERGUY/proprietary_vendor_xiaomi.git -b eleven vendor/xiaomi
 fi
 
 if [ $base = 12 ]
+then
+git clone https://github.com/AospExtended-Devices/device_xiaomi_tissot.git -b 11.x device/xiaomi/tissot
+git clone https://github.com/AospExtended-Devices/device_xiaomi_msm8953-common.git -b 11.x device/xiaomi/msm8953-common
+git clone https://github.com/MASTERGUY/android_kernel_xiaomi_msm8953.git -b eleven kernel/xiaomi/msm8953
+git clone https://gitlab.com/MASTERGUY/proprietary_vendor_xiaomi.git -b eleven vendor/xiaomi
+fi
+
+if [ $base = 13 ]
+then
+git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git -b aex11 device/xiaomi/tissot
+git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git -b aex11 device/xiaomi/msm8953-common
+git clone https://github.com/MASTERGUY/android_kernel_xiaomi_msm8953.git -b eleven kernel/xiaomi/msm8953
+git clone https://gitlab.com/MASTERGUY/proprietary_vendor_xiaomi.git -b eleven vendor/xiaomi
+fi
+
+if [ $base = 14 ]
 then
 rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media
 git clone https://github.com/LineageOS/android_hardware_qcom_display -b lineage-18.0-caf-msm8996 hardware/qcom-caf/msm8996/display
@@ -150,11 +169,20 @@ git clone https://github.com/LineageOS/android_hardware_qcom_media -b lineage-18
 git clone https://github.com/LineageOS/android_hardware_qcom_audio -b lineage-18.0-caf-msm8996 hardware/qcom-caf/msm8996/audio
 fi
 
-if [ $base = 13 ]
+if [ $base = 15 ]
 then
-rm -rf hardware/qcom-caf/wlan
-git clone https://github.com/MASTERGUY/android_hardware_qcom_wlan.git hardware/qcom-caf/wlan
+rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media
+git clone https://github.com/MASTERGUY/hardware_qcom-caf_msm8996_display.git -b eleven hardware/qcom-caf/msm8996/display
+git clone https://github.com/MASTERGUY/hardware_qcom-caf_msm8996_display.git -b eleven hardware/qcom-caf/msm8996/media
+git clone https://github.com/LineageOS/android_hardware_qcom_audio -b lineage-18.0-caf-msm8996 hardware/qcom-caf/msm8996/audio
+fi
+
+if [ $base = 16 ]
+then
+rm -rf hardware/interfaces
+git clone https://github.com/MASTERGUY/android_hardware_interfaces.git hardware/interfaces
 fi
 
 
 echo "Task is executed successfully"
+
