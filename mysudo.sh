@@ -173,7 +173,7 @@ if [ $base = 15 ]
 then
 rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media
 git clone https://github.com/MASTERGUY/hardware_qcom-caf_msm8996_display.git -b eleven hardware/qcom-caf/msm8996/display
-git clone https://github.com/MASTERGUY/hardware_qcom-caf_msm8996_display.git -b eleven hardware/qcom-caf/msm8996/media
+git clone https://github.com/MASTERGUY/hardware_qcom-caf_msm8996_media.git -b eleven hardware/qcom-caf/msm8996/media
 git clone https://github.com/LineageOS/android_hardware_qcom_audio -b lineage-18.0-caf-msm8996 hardware/qcom-caf/msm8996/audio
 fi
 
