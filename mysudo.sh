@@ -16,7 +16,6 @@ echo "12. Clone AEX DT+Kernel+CDT+Vendor From Official Sources"
 echo "13. Clone AEX DT+Kernel+CDT+Vendor From My Own Git"
 echo "14. Clone Hals From LOS"
 echo "15. Clone Hals From My Git (R)"
-echo "16. Clone Hardware_interfaces From My Own Git"
 read base
 
 if [ $base = 1 ]
@@ -177,11 +176,6 @@ git clone https://github.com/MASTERGUY/hardware_qcom-caf_msm8996_media.git -b el
 git clone https://github.com/LineageOS/android_hardware_qcom_audio -b lineage-18.0-caf-msm8996 hardware/qcom-caf/msm8996/audio
 fi
 
-if [ $base = 16 ]
-then
-rm -rf hardware/interfaces
-git clone https://github.com/MASTERGUY/android_hardware_interfaces.git hardware/interfaces
-fi
 
 
 echo "Task is executed successfully"
