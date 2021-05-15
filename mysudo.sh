@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Select the base : "
-echo "01. Clone DerpFest DT+Kernel+CDT+Vendor From Official Sources"
+echo "01. Clone DerpFest DT+Kernel+CDT+Vendor+hals From Official Sources"
 echo "02. Clone Du-Rex DT+Kernel+CDT+Vendor"
 echo "03. Clone DerpFest DT+Kernel+CDT+Vendor From My Own Repo"
 echo "04. Clone AEX DT+CDT From Official Sources"
@@ -20,17 +20,15 @@ read base
 
 if [ $base = 1 ]
 then
-git clone https://github.com/DerpFest-Devices/device_xiaomi_tissot.git device/xiaomi/tissot
-git clone https://github.com/DerpFest-Devices/device_xiaomi_msm8953-common.git device/xiaomi/msm8953-common
-git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
-git clone https://github.com/DerpFest-Devices/vendor_xiaomi_tissot.git vendor/xiaomi
-echo "Removing Old Gapps & Replacing it with mine!"
-rm -rf vendor/gapps/config.mk
-wget -P vendor/gapps/ https://raw.githubusercontent.com/MASTERGUY/android_vendor_gapps/master/config.mk
-echo "Adding FM From LOS"
-git clone https://github.com/LineageOS/android_packages_apps_FMRadio packages/apps/FMRadio
-git clone https://github.com/LineageOS/android_vendor_qcom_opensource_libfmjni.git vendor/qcom/opensource/libfmjni
-fi
+git clone https://github.com/DerpFest-Devices/device_xiaomi_tissot.git -b 11 device/xiaomi/tissot
+git clone https://github.com/DerpFest-Devices/device_xiaomi_msm8953-common.git -b 11 device/xiaomi/msm8953-common
+git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git -b 11 kernel/xiaomi/msm8953
+git clone https://gitlab.com/MASTERGUY/proprietary_vendor_xiaomi.git -b eleven vendor/xiaomi
+rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media
+git clone https://github.com/reharsh67/Hals-R.git -b display-r  hardware/qcom-caf/msm8996/display
+git clone https://github.com/reharsh67/Hals-R.git -b media-r  hardware/qcom-caf/msm8996/media
+git clone https://github.com/reharsh67/Hals-R.git -b audio-r  hardware/qcom-caf/msm8996/audio
+ fi
 
 if [ $base = 2 ]
 then
