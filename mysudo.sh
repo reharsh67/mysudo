@@ -20,23 +20,28 @@ read base
 
 if [ $base = 1 ]
 then
+rm -rf device/xiaomi kernel/xiaomi vendor/xiaomi
 git clone https://github.com/DerpFest-Devices/device_xiaomi_tissot.git -b 11 device/xiaomi/tissot
 git clone https://github.com/DerpFest-Devices/device_xiaomi_msm8953-common.git -b 11 device/xiaomi/msm8953-common
 git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git -b 11 kernel/xiaomi/msm8953
-git clone https://gitlab.com/Sohil876/proprietary_vendor_xiaomi.git -b eleven vendor/xiaomi --single-branch --depth=1
+git https://gitlab.com/Abhinavgupta371/proprietary_vendor_xiaomi.git -b lineage-18.1 vendor/xiaomi --single-branch --depth=1
 rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media
-git clone https://github.com/reharsh67/Hals-R.git -b display-r  hardware/qcom-caf/msm8996/display
-git clone https://github.com/reharsh67/Hals-R.git -b media-r  hardware/qcom-caf/msm8996/media
-git clone https://github.com/reharsh67/Hals-R.git -b audio-r  hardware/qcom-caf/msm8996/audio
+git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_display -b eleven  hardware/qcom-caf/msm8996/display
+git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_media -b eleven  hardware/qcom-caf/msm8996/media
+git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_audio -b eleven  hardware/qcom-caf/msm8996/audio
  fi
 
 if [ $base = 2 ]
 then
 
-git clone https://github.com/MASTERGUY/android_device_xiaomi_tissot.git -b du10 device/xiaomi/tissot
-git clone https://github.com/MASTERGUY/android_device_xiaomi_msm8953-common.git device/xiaomi/msm8953-common
-git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953
-git clone https://github.com/MASTERGUY/proprietary_vendor_xiaomi.git vendor/xiaomi
+git clone https://github.com/PixelExperience-Devices/device_xiaomi_tissot.git -b eleven device/xiaomi/tissot
+git clone https://github.com/PixelExperience-Devices/device_xiaomi_msm8953-common.git -b eleven device/xiaomi/msm8953-common
+git clone https://github.com/PixelExperience-Devices/kernel_xiaomi_msm8953.git -b eleven kernel/xiaomi/msm8953
+git clone https://gitlab.com/Sohil876/proprietary_vendor_xiaomi.git -b eleven vendor/xiaomi --single-branch --depth=1
+rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media
+git clone https://github.com/reharsh67/Hals-R.git -b display-r  hardware/qcom-caf/msm8996/display
+git clone https://github.com/reharsh67/Hals-R.git -b media-r  hardware/qcom-caf/msm8996/media
+git clone https://github.com/reharsh67/Hals-R.git -b audio-r  hardware/qcom-caf/msm8996/audio
 fi
 
 if [ $base = 3 ]
