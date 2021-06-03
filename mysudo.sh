@@ -42,6 +42,16 @@ rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardwar
 git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_display -b eleven  hardware/qcom-caf/msm8996/display
 git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_media -b eleven  hardware/qcom-caf/msm8996/media
 git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_audio -b eleven  hardware/qcom-caf/msm8996/audio
+
+rm -rf device/xiaomi kernel/xiaomi vendor/xiaomi
+git clone https://github.com/xiaomi-msm8953-devs/android_device_xiaomi_tissot -b wip device/xiaomi/tissot
+git clone https://github.com/xiaomi-msm8953-devs/android_device_xiaomi_msm8953-common -b wip device/xiaomi/msm8953-common
+git clone https://github.com/PixelExperience-Devices/kernel_xiaomi_msm8953.git -b wip kernel/xiaomi/msm8953
+git clone https://gitlab.com/abhinavgupta371/proprietary_vendor_xiaomi.git -b lineage-18.1 vendor/xiaomi --single-branch --depth=1
+rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media
+git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_display -b eleven  hardware/qcom-caf/msm8996/display
+git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_media -b eleven  hardware/qcom-caf/msm8996/media
+git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_audio -b eleven  hardware/qcom-caf/msm8996/audio
 fi
 
 if [ $base = 3 ]
