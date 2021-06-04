@@ -24,7 +24,7 @@ rm -rf device/xiaomi kernel/xiaomi vendor/xiaomi
 git clone https://github.com/DerpFest-Devices/device_xiaomi_tissot.git -b 11 device/xiaomi/tissot
 git clone https://github.com/DerpFest-Devices/device_xiaomi_msm8953-common.git -b 11 device/xiaomi/msm8953-common
 git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git -b 11 kernel/xiaomi/msm8953
-git https://gitlab.com/Abhinavgupta371/proprietary_vendor_xiaomi.git -b lineage-18.1 vendor/xiaomi --single-branch --depth=1
+git https://gitlab.com/Abhinavgupta371/proprietary_vendor_xiaomi.git -b wip vendor/xiaomi --single-branch --depth=1
 rm -rf hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media
 git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_display -b eleven  hardware/qcom-caf/msm8996/display
 git clone https://github.com/PixelExperience/hardware_qcom-caf_msm8996-r_media -b eleven  hardware/qcom-caf/msm8996/media
